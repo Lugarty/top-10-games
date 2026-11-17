@@ -19,7 +19,6 @@ jobs:
       - name: Run HTMLHint
         id: htmlhint
         run: npx htmlhint **/*.html
-        continue-on-error: true
 
       - name: Fix permissions for stylelint
         run: chmod +x ./node_modules/.bin/stylelint
@@ -27,7 +26,6 @@ jobs:
       - name: Run Stylelint
         id: stylelint
         run: npx stylelint **/*.css
-        continue-on-error: true
 
       - name: Fix permissions for ESLint
         run: chmod +x ./node_modules/.bin/eslint
@@ -35,14 +33,13 @@ jobs:
       - name: Run ESLint
         id: eslint
         run: npx eslint . --ext .js,.ts
-        continue-on-error: true
 
       - name: HTMLHint passed?
         if: steps.htmlhint.outcome == 'success'
         run: echo "HTMLHint completed successfully, no errors found!"
 
       - name: HTMLHint failed?
-        if: steps.htmlhint.outcome == 'failure'
+        if: failure() && steps.htmlhint.outcome == 'failure'
         run: echo "HTMLHint failed, please check the errors!"
 
       - name: Stylelint passed?
@@ -50,7 +47,7 @@ jobs:
         run: echo "Stylelint completed successfully, no errors found!"
 
       - name: Stylelint failed?
-        if: steps.stylelint.outcome == 'failure'
+        if: failure() && steps.stylelint.outcome == 'failure'
         run: echo "Stylelint failed, please check the errors!"
 
       - name: ESLint passed?
@@ -58,7 +55,7 @@ jobs:
         run: echo "ESLint completed successfully, no errors found!"
 
       - name: ESLint failed?
-        if: steps.eslint.outcome == 'failure'
+        if: failure() && steps.eslint.outcome == 'failure'
         run: echo "ESLint found issues. Please fix them!"
 
 
