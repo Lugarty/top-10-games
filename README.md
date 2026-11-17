@@ -37,21 +37,31 @@ Then open `http://localhost:3000`.
 
 ## Validation
 
-The GitHub Actions workflow runs HTMLHint, Stylelint, and ESLint on pushes and pull requests. These checks are currently advisory and do not block a successful workflow run.
+Install the pinned lint dependencies and run all checks locally:
+
+```bash
+npm ci
+npm run lint
+```
+
+The GitHub Actions workflow runs HTMLHint, Stylelint, and ESLint on pushes and pull requests. A failing check causes the workflow to fail.
 
 ## Project Structure
 
 ```text
 .
 ├── .github/workflows/check-push.yml
+├── eslint.config.mjs
 ├── figs/                 # Game images
 ├── Dockerfile
 ├── index.html
+├── package.json
+├── package-lock.json
 ├── script.js
 └── style.css
 ```
 
-Lint configuration files are stored in the repository root.
+HTMLHint and Stylelint configuration files are stored in the repository root.
 
 ## Project Status and License
 
