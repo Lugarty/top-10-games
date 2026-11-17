@@ -1,74 +1,62 @@
 # Top 10 Games
 
-Projeto web desenvolvido para apresentar um ranking pessoal de jogos favoritos, exibindo informações de forma organizada, intuitiva e responsiva.
+> A responsive, card-based ranking of ten favorite games.
 
-## 🎮 Sobre o Projeto
+[Live demo](https://lugarty.github.io/top-10-games/)
 
-O projeto apresenta minha opinião sobre jogos específicos em um ranking Top 10, permitindo visualizar informações organizadas de forma simples e intuitiva.
+## Overview
 
-Foi desenvolvido com foco na prática de desenvolvimento front-end, manipulação de dados e construção de interfaces utilizando HTML, CSS e JavaScript.
+Top 10 Games is a small static website that presents a personal ranking of ten games, with a short description for each entry. Selecting a card reveals its details.
 
-## 🌐 Demonstração
+## Features
 
-Acesse a versão publicada do projeto:
+- Ten ranked game cards
+- Expandable descriptions
+- Responsive layout
+- Live deployment through GitHub Pages
 
-🔗 https://lugarty.github.io/top-10-games/
+## Tech Stack
 
-## 🚀 Funcionalidades
+- HTML5
+- CSS3
+- JavaScript
+- Docker and GitHub Actions for local serving and automated checks
 
-* Exibição de ranking dos 10 melhores jogos
-* Interface simples e intuitiva
-* Organização dos jogos por posição
-* Exibição de informações dos jogos
-* Layout responsivo
-* Navegação rápida entre os itens da lista
+## Run Locally
 
-## 🛠 Tecnologias Utilizadas
+Clone the repository and open `index.html` in a browser. For live reload during development, use the VS Code Live Server extension.
 
-* HTML5
-* CSS3
-* JavaScript
-
-## 📂 Estrutura do Projeto
-
-```text
-top-10-games/
-├── css/
-├── js/
-├── assets/
-├── images/
-├── index.html
-└── README.md
-```
-
-## ▶️ Como Executar
-
-1. Clone o repositório:
+To serve the site with Docker:
 
 ```bash
-git clone https://github.com/Lugarty/top-10-games.git
+docker build -t top-10-games .
+docker run --rm -p 3000:3000 top-10-games
 ```
 
-2. Acesse a pasta do projeto.
+Then open `http://localhost:3000`.
 
-3. Abra o arquivo:
+## Validation
+
+The GitHub Actions workflow runs HTMLHint, Stylelint, and ESLint on pushes and pull requests. These checks are currently advisory and do not block a successful workflow run.
+
+## Project Structure
 
 ```text
-index.html
+.
+├── .github/workflows/check-push.yml
+├── figs/                 # Game images
+├── Dockerfile
+├── index.html
+├── script.js
+└── style.css
 ```
 
-ou execute utilizando a extensão **Live Server** no VS Code.
+Lint configuration files are stored in the repository root.
 
-## 💡 Objetivo
+## Project Status and License
 
-Este projeto foi desenvolvido para praticar conceitos de desenvolvimento web, incluindo:
+This is a personal project and is not offered as a commercial product. No license has been specified.
 
-* Estruturação de páginas com HTML
-* Estilização com CSS
-* Manipulação de elementos utilizando JavaScript
-* Organização de conteúdo em interfaces responsivas
+## Author
 
-## 👥 Desenvolvedor
-
-### 🌟 Nome	| 📧 Contato
-- Anisio Oliveira Albuquerque Filho	| anisioalbuquerque71@gmail.com
+[Anísio Oliveira (@Lugarty)](https://github.com/Lugarty)
