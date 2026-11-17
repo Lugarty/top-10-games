@@ -10,29 +10,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install --save-dev htmlhint stylelint-config-standard stylelint eslint@8
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-      - name: Fix permissions for htmlhint
-        run: chmod +x ./node_modules/.bin/htmlhint
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run HTMLHint
         id: htmlhint
-        run: npx htmlhint **/*.html
-
-      - name: Fix permissions for stylelint
-        run: chmod +x ./node_modules/.bin/stylelint
+        run: npm run lint:html
 
       - name: Run Stylelint
         id: stylelint
-        run: npx stylelint **/*.css
-
-      - name: Fix permissions for ESLint
-        run: chmod +x ./node_modules/.bin/eslint
+        run: npm run lint:css
 
       - name: Run ESLint
         id: eslint
-        run: npx eslint . --ext .js,.ts
+        run: npm run lint:js
 
       - name: HTMLHint passed?
         if: steps.htmlhint.outcome == 'success'
